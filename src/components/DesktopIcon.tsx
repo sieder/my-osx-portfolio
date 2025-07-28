@@ -36,7 +36,12 @@ export const DesktopIcon = ({ icon, label, onDoubleClick, isDarkMode }: DesktopI
         <div className={`w-12 h-12 rounded-lg p-1 transition-all duration-200 ${
           isDragging ? 'bg-blue-500/30 backdrop-blur-sm' : 'hover:bg-white/10'
         }`}>
-          <img src={icon} alt={label} className="w-full h-full object-contain" />
+          <img 
+            src={icon} 
+            alt={label} 
+            className="w-full h-full object-contain pointer-events-none select-none" 
+            draggable={false}
+          />
         </div>
         <span className={`text-sm text-center mt-1 px-1 py-0.5 rounded transition-all duration-200 ${
           isDarkMode ? 'text-white' : 'text-gray-900'

@@ -4,6 +4,8 @@ interface ProjectBrowserProps {
   isOpen: boolean;
   onClose: () => void;
   onMinimize: () => void;
+  onMaximize: () => void;
+  isMaximized: boolean;
   isDarkMode: boolean;
 }
 
@@ -19,11 +21,11 @@ interface Project {
 const projects: Project[] = [
   {
     id: '1',
-    title: 'E-Commerce Platform',
+    title: 'AirAsia Duty Free',
     description: 'A full-stack e-commerce solution built with React, Node.js, and PostgreSQL',
-    url: 'https://github.com/example/ecommerce',
+    url: 'https://www.airasia.com/dutyfree/en/gb',
     image: 'https://via.placeholder.com/300x200/4F46E5/white?text=E-Commerce',
-    tech: ['React', 'Node.js', 'PostgreSQL', 'Stripe']
+    tech: ['AstroJS', 'Node.js', 'PostgreSQL', 'Tailwind CSS']
   },
   {
     id: '2',
@@ -55,6 +57,8 @@ export const ProjectBrowser: React.FC<ProjectBrowserProps> = ({
   isOpen, 
   onClose, 
   onMinimize, 
+  onMaximize,
+  isMaximized,
   isDarkMode 
 }) => {
   const [currentUrl, setCurrentUrl] = useState('projects://localhost/portfolio');
@@ -75,7 +79,13 @@ export const ProjectBrowser: React.FC<ProjectBrowserProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-      <div className={`w-[95vw] h-[90vh] max-w-6xl rounded-lg shadow-2xl overflow-hidden ${
+      <div className={`${
+        isMaximized 
+          ? 'w-full h-full' 
+          : 'w-[95vw] h-[90vh] max-w-6xl'
+      } ${
+        isMaximized ? 'rounded-none' : 'rounded-lg'
+      } shadow-2xl overflow-hidden transition-all duration-300 ${
         isDarkMode ? 'bg-gray-800' : 'bg-white'
       }`}>
         {/* Browser Title Bar */}
@@ -97,7 +107,11 @@ export const ProjectBrowser: React.FC<ProjectBrowserProps> = ({
                 className="w-3 h-3 bg-yellow-500 rounded-full hover:bg-yellow-600 transition-colors"
                 title="Minimize"
               />
-              <button className="w-3 h-3 bg-green-500 rounded-full hover:bg-green-600 transition-colors" />
+              <button 
+                onClick={onMaximize}
+                className="w-3 h-3 bg-green-500 rounded-full hover:bg-green-600 transition-colors"
+                title={isMaximized ? "Restore" : "Maximize"}
+              />
             </div>
             <span className="text-sm font-medium">Projects - Safari</span>
           </div>

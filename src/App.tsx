@@ -4,6 +4,7 @@ import { DesktopIcon } from "./components/DesktopIcon";
 import { MenuBar } from "./components/MenuBar";
 import { PDFViewer } from "./components/PDFViewer";
 import { ProjectBrowser } from "./components/ProjectBrowser";
+import { MarioGame } from "./components/MarioGame";
 import { Dock } from "./components/Dock";
 import wallpaper from "./assets/wallpaper.jpg"; // Add any wallpaper you like
 
@@ -12,6 +13,10 @@ function App() {
   const [minimizedWindows, setMinimizedWindows] = useState<string[]>([]);
   const [isPDFOpen, setIsPDFOpen] = useState(false);
   const [isProjectsOpen, setIsProjectsOpen] = useState(false);
+  const [isMarioGameOpen, setIsMarioGameOpen] = useState(false);
+  const [isProjectsMaximized, setIsProjectsMaximized] = useState(false);
+  const [isPDFMaximized, setIsPDFMaximized] = useState(false);
+  const [isMarioGameMaximized, setIsMarioGameMaximized] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(() => {
     const saved = localStorage.getItem('darkMode');
     return saved ? JSON.parse(saved) : true;
@@ -32,6 +37,8 @@ function App() {
       setIsPDFOpen(true);
     } else if (label === "Projects") {
       setIsProjectsOpen(true);
+    } else if (label === "About Me") {
+      setIsMarioGameOpen(true);
     }
   };
 
@@ -53,6 +60,28 @@ function App() {
   const minimizeProjects = () => {
     setIsProjectsOpen(false);
     setMinimizedWindows(prev => [...prev, "Projects"]);
+  };
+
+  const maximizeProjects = () => {
+    setIsProjectsMaximized(!isProjectsMaximized);
+  };
+
+  const maximizePDF = () => {
+    setIsPDFMaximized(!isPDFMaximized);
+  };
+
+  const maximizeMarioGame = () => {
+    setIsMarioGameMaximized(!isMarioGameMaximized);
+  };
+
+  const closeMarioGame = () => {
+    setIsMarioGameOpen(false);
+    setWindows(prev => prev.filter(w => w !== "About Me"));
+  };
+
+  const minimizeMarioGame = () => {
+    setIsMarioGameOpen(false);
+    setMinimizedWindows(prev => [...prev, "About Me"]);
   };
 
   const restoreWindow = (windowName: string) => {
@@ -98,7 +127,7 @@ function App() {
       {/* Desktop Icons */}
       <div className="absolute top-12 left-4 flex flex-col gap-6 z-10">
         <DesktopIcon
-          icon="/icons/about.png"
+          icon="/icons/about-me.png"
           label="About Me"
           onDoubleClick={() => handleOpen("About Me")}
           isDarkMode={isDarkMode}
@@ -141,6 +170,8 @@ function App() {
         isOpen={isPDFOpen} 
         onClose={closePDF} 
         onMinimize={minimizePDF}
+        onMaximize={maximizePDF}
+        isMaximized={isPDFMaximized}
         isDarkMode={isDarkMode} 
       />
 
@@ -149,6 +180,18 @@ function App() {
         isOpen={isProjectsOpen}
         onClose={closeProjects}
         onMinimize={minimizeProjects}
+        onMaximize={maximizeProjects}
+        isMaximized={isProjectsMaximized}
+        isDarkMode={isDarkMode}
+      />
+
+      {/* Mario Game */}
+      <MarioGame 
+        isOpen={isMarioGameOpen}
+        onClose={closeMarioGame}
+        onMinimize={minimizeMarioGame}
+        onMaximize={maximizeMarioGame}
+        isMaximized={isMarioGameMaximized}
         isDarkMode={isDarkMode}
       />
     </div>
