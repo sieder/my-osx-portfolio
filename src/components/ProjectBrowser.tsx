@@ -21,34 +21,18 @@ interface Project {
 const projects: Project[] = [
   {
     id: '1',
-    title: 'AirAsia Duty Free',
-    description: 'A full-stack e-commerce solution built with React, Node.js, and PostgreSQL',
+    title: 'Airasia Duty Free',
+    description: 'A full-stack e-commerce solution built with AstroJS, Zustand, and Tailwind CSS',
     url: 'https://www.airasia.com/dutyfree/en/gb',
-    image: 'https://via.placeholder.com/300x200/4F46E5/white?text=E-Commerce',
-    tech: ['AstroJS', 'Node.js', 'PostgreSQL', 'Tailwind CSS']
-  },
-  {
-    id: '2',
-    title: 'Task Management App',
-    description: 'A collaborative task management application with real-time updates',
-    url: 'https://github.com/example/taskmanager',
-    image: 'https://via.placeholder.com/300x200/059669/white?text=Task+Manager',
-    tech: ['React', 'Socket.io', 'MongoDB', 'Express']
-  },
-  {
-    id: '3',
-    title: 'Weather Dashboard',
-    description: 'A responsive weather dashboard with location-based forecasts',
-    url: 'https://github.com/example/weather',
-    image: 'https://via.placeholder.com/300x200/DC2626/white?text=Weather+App',
-    tech: ['React', 'OpenWeather API', 'Chart.js', 'Tailwind']
+    image: '/images/duty-free.png', // <-- Use a static image path or actual image URL
+    tech: ['AstroJS', 'Zustand', 'Tailwind CSS']
   },
   {
     id: '4',
-    title: 'Portfolio Website',
-    description: 'A modern portfolio website with smooth animations and responsive design',
-    url: 'https://github.com/example/portfolio',
-    image: 'https://via.placeholder.com/300x200/7C3AED/white?text=Portfolio',
+    title: 'AirAsia Play',
+    description: 'A digital media brand and content hub featuring articles, stories, and multimedia about travel, culture, food, and pop‑culture moments in ASEAN countries.',
+    url: 'https://www.airasia.com/play/',
+    image: '/images/play.png',
     tech: ['React', 'Framer Motion', 'TypeScript', 'Tailwind']
   }
 ];
@@ -182,11 +166,14 @@ export const ProjectBrowser: React.FC<ProjectBrowserProps> = ({
                       isDarkMode ? 'bg-gray-700' : 'bg-white border border-gray-200'
                     }`}
                   >
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-48 object-cover"
-                    />
+                    <div className="w-full h-48 bg-gray-100 border-b overflow-hidden flex items-center justify-center">
+                      <img
+                        src={project.image}
+                        alt={`Screenshot of ${project.title}`}
+                        className="object-cover w-full h-full"
+                        loading="lazy"
+                      />
+                    </div>
                     <div className="p-6">
                       <h3 className={`text-xl font-semibold mb-2 ${
                         isDarkMode ? 'text-white' : 'text-gray-900'

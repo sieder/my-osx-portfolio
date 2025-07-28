@@ -44,8 +44,8 @@ export const DesktopIcon = ({ icon, label, onDoubleClick, isDarkMode }: DesktopI
           />
         </div>
         <span className={`text-sm text-center mt-1 px-1 py-0.5 rounded transition-all duration-200 ${
-          isDarkMode ? 'text-white' : 'text-gray-900'
-        } ${isDragging ? 'bg-blue-500/20 backdrop-blur-sm' : 'bg-black/20 backdrop-blur-sm'}`}>
+          isDarkMode ? 'text-white' : 'text-white'
+        } ${isDragging ? 'bg-blue-500/20 backdrop-blur-sm' : 'bg-black/60 backdrop-blur-sm'}`}>
           {label}
         </span>
       </div>
