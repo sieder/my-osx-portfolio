@@ -33,7 +33,7 @@ const projects: Project[] = [
     description: 'A digital media brand and content hub featuring articles, stories, and multimedia about travel, culture, food, and pop‑culture moments in ASEAN countries.',
     url: 'https://www.airasia.com/play/',
     image: '/images/play.png',
-    tech: ['React', 'Framer Motion', 'TypeScript', 'Tailwind']
+    tech: ['React', 'Context API', 'NodeJS', 'SCSS']
   }
 ];
 
@@ -53,11 +53,8 @@ export const ProjectBrowser: React.FC<ProjectBrowserProps> = ({
   const handleLinkClick = (url: string) => {
     setIsLoading(true);
     setCurrentUrl(url);
-    // Simulate loading
     setTimeout(() => {
-      setIsLoading(false);
-      // Open actual link in new tab
-      window.open(url, '_blank');
+      window.location.href = url; // navigates in the same tab
     }, 1000);
   };
 
