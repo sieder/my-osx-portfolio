@@ -124,8 +124,11 @@ function App() {
         isDarkMode ? 'bg-black/20' : 'bg-black/10'
       }`} />
 
-      {/* Desktop Icons */}
-      <div className="absolute top-12 left-4 flex flex-col gap-6 z-10">
+      {/* Desktop Icons - Responsive Layout */}
+      <div className="absolute top-12 left-4 z-10
+        flex flex-col gap-4 sm:gap-6
+        md:flex-col md:gap-6
+        lg:flex-col lg:gap-6">
         <DesktopIcon
           icon="/icons/about-me.png"
           label="About Me"

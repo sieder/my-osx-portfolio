@@ -66,7 +66,7 @@ export const ProjectBrowser: React.FC<ProjectBrowserProps> = ({
       <div className={`${
         isMaximized 
           ? 'w-full h-full' 
-          : 'w-[95vw] h-[90vh] max-w-6xl'
+          : 'w-[95vw] h-[90vh] sm:w-[90vw] sm:h-[85vh] md:w-[85vw] md:h-[80vh] lg:max-w-6xl'
       } ${
         isMaximized ? 'rounded-none' : 'rounded-lg'
       } shadow-2xl overflow-hidden transition-all duration-300 ${
@@ -158,7 +158,7 @@ export const ProjectBrowser: React.FC<ProjectBrowserProps> = ({
                 </p>
               </header>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-6">
                 {projects.map((project) => (
                   <div
                     key={project.id}

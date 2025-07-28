@@ -29,37 +29,37 @@ export const MenuBar: React.FC<MenuBarProps> = ({ isDarkMode, onToggleTheme }) =
         <div className="flex items-center space-x-1">
           <span className="text-lg">🍎</span>
         </div>
-        <div className="flex items-center space-x-4 text-xs font-medium">
-          <span className="hover:bg-gray-200/20 px-2 py-1 rounded cursor-pointer">Portfolio</span>
-          <span className="hover:bg-gray-200/20 px-2 py-1 rounded cursor-pointer">File</span>
-          <span className="hover:bg-gray-200/20 px-2 py-1 rounded cursor-pointer">Edit</span>
-          <span className="hover:bg-gray-200/20 px-2 py-1 rounded cursor-pointer">View</span>
-          <span className="hover:bg-gray-200/20 px-2 py-1 rounded cursor-pointer">Window</span>
-          <span className="hover:bg-gray-200/20 px-2 py-1 rounded cursor-pointer">Help</span>
+        <div className="flex items-center space-x-2 sm:space-x-4 text-xs font-medium">
+          <span className="hover:bg-gray-200/20 px-1 sm:px-2 py-1 rounded cursor-pointer">Portfolio</span>
+          <span className="hover:bg-gray-200/20 px-1 sm:px-2 py-1 rounded cursor-pointer hidden sm:inline">File</span>
+          <span className="hover:bg-gray-200/20 px-1 sm:px-2 py-1 rounded cursor-pointer hidden md:inline">Edit</span>
+          <span className="hover:bg-gray-200/20 px-1 sm:px-2 py-1 rounded cursor-pointer hidden md:inline">View</span>
+          <span className="hover:bg-gray-200/20 px-1 sm:px-2 py-1 rounded cursor-pointer hidden lg:inline">Window</span>
+          <span className="hover:bg-gray-200/20 px-1 sm:px-2 py-1 rounded cursor-pointer hidden lg:inline">Help</span>
         </div>
       </div>
 
       {/* Right side - System controls */}
-      <div className="flex items-center space-x-3 text-xs">
+      <div className="flex items-center space-x-1 sm:space-x-3 text-xs">
         <button
           onClick={onToggleTheme}
-          className="hover:bg-gray-200/20 px-3 py-1 rounded cursor-pointer transition-colors flex items-center justify-center min-w-[32px]"
+          className="hover:bg-gray-200/20 px-2 sm:px-3 py-1 rounded cursor-pointer transition-colors flex items-center justify-center min-w-[28px] sm:min-w-[32px]"
           title={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
         >
-          <span className="text-base">{isDarkMode ? '☀️' : '🌙'}</span>
+          <span className="text-sm sm:text-base">{isDarkMode ? '☀️' : '🌙'}</span>
         </button>
-        <div className="flex items-center space-x-1">
+        <div className="flex items-center space-x-1 hidden sm:flex">
           <span>🔋</span>
           <span>100%</span>
         </div>
-        <div className="flex items-center space-x-1">
+        <div className="flex items-center space-x-1 hidden md:flex">
           <span>📶</span>
         </div>
-        <div className="flex items-center space-x-1">
+        <div className="flex items-center space-x-1 hidden lg:flex">
           <span>🔊</span>
         </div>
-        <div className="flex flex-row items-center space-x-2 text-right">
-          <span>{currentDate}</span>
+        <div className="flex flex-row items-center space-x-1 sm:space-x-2 text-right">
+          <span className="hidden sm:inline">{currentDate}</span>
           <span className="font-mono">{currentTime}</span>
         </div>
       </div>

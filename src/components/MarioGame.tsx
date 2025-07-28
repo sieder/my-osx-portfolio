@@ -221,7 +221,7 @@ export const RPGGame: React.FC<RPGGameProps> = ({ isOpen, onClose, onMinimize, o
       <div className={`${
         isMaximized 
           ? 'w-full h-full' 
-          : 'w-[95vw] h-[90vh] max-w-6xl'
+          : 'w-[95vw] h-[90vh] sm:w-[90vw] sm:h-[85vh] md:w-[85vw] md:h-[80vh] lg:max-w-6xl'
       } ${
         isMaximized ? 'rounded-none' : 'rounded-lg'
       } shadow-2xl overflow-hidden transition-all duration-300 ${
