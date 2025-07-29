@@ -6,6 +6,7 @@ import { PDFViewer } from "./components/PDFViewer";
 import { ProjectBrowser } from "./components/ProjectBrowser";
 import { MarioGame } from "./components/MarioGame";
 import { Dock } from "./components/Dock";
+import { ErrorBoundary } from "./components/ErrorBoundary";
 import wallpaper from "./assets/wallpaper.jpg"; // Add any wallpaper you like
 
 function App() {
@@ -107,9 +108,10 @@ function App() {
   }, [isDarkMode]);
 
   return (
-    <div className={`w-screen h-screen relative overflow-hidden transition-all duration-300 ${
-      isDarkMode ? 'bg-gray-900' : 'bg-gray-100'
-    }`}>
+    <ErrorBoundary>
+      <div className={`w-screen h-screen relative overflow-hidden transition-all duration-300 ${
+        isDarkMode ? 'bg-gray-900' : 'bg-gray-100'
+      }`}>
       {/* Menu Bar */}
       <MenuBar isDarkMode={isDarkMode} onToggleTheme={toggleTheme} />
       
@@ -198,6 +200,7 @@ function App() {
         isDarkMode={isDarkMode}
       />
     </div>
+    </ErrorBoundary>
   );
 }
 
