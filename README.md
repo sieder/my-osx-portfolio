@@ -1,70 +1,165 @@
-# Getting Started with Create React App
+# Sieder Portfolio — Amber CRT
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A personal portfolio styled as a 16-bit amber CRT terminal.
+Live at **https://sieder.dev**.
 
-## Available Scripts
+```
+┌──────────────────────────────┐
+│        SIEDER.SYS            │
+│      ── MAIN MENU ──         │
+│                              │
+│        > ABOUT               │
+│          PROJECTS            │
+│          RESUME              │
+│          CONTACT             │
+│          SNAKE               │
+│          POWER OFF           │
+└──────────────────────────────┘
+```
 
-In the project directory, you can run:
+## Stack
 
-### `yarn start`
+- React 19 + TypeScript (Create React App)
+- Tailwind CSS for styling, custom CSS for CRT effects (scanlines, glow, vignette, flicker)
+- `useReducer` state machine for screen routing — no react-router
+- Web Audio API for menu beeps
+- Press Start 2P + VT323 fonts via Google Fonts
+- Hosted on Vercel
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Run locally
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+yarn install
+PORT=3000 yarn start
+```
 
-### `yarn test`
+Open http://localhost:3000.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+> The shell may have `PORT=4200` exported (used by other projects). Pass `PORT=3000` explicitly if `yarn start` reports the wrong port.
 
-### `yarn build`
+## Build
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+yarn build
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Test / typecheck
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+yarn test
+npx tsc --noEmit
+```
 
-### `yarn eject`
+## Project layout
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+src/
+├── App.tsx               # Top-level wiring: state, keyboard, screen router
+├── components/
+│   ├── CRTShell.tsx      # Chassis frame + scanlines + glow + vignette + curve
+│   ├── ChannelTransition.tsx
+│   ├── MobileDPad.tsx    # Touch controls (auto-shown on mobile)
+│   └── ErrorBoundary.tsx
+├── screens/
+│   ├── BootScreen.tsx
+│   ├── MainMenu.tsx
+│   ├── AboutScreen.tsx        # RPG stat sheet
+│   ├── ProjectsScreen.tsx     # Scroll list
+│   ├── ProjectDetailScreen.tsx
+│   ├── ResumeScreen.tsx       # Text mode + PDF mode
+│   ├── ContactScreen.tsx
+│   ├── SnakeScreen.tsx        # Mini-game with high score
+│   └── PowerOffScreen.tsx
+├── state/
+│   ├── reducer.ts        # All transitions + nav logic
+│   └── types.ts
+├── hooks/
+│   ├── useAudio.ts       # square-wave beeps
+│   └── useKeyboard.ts
+└── data/                 # ★ Edit these to update content
+    ├── about.ts
+    ├── skills.ts
+    ├── projects.ts
+    └── contact.ts
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Editing content
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Everything that shows up on screen lives in `src/data/`:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- `about.ts` — name, class (role), location, bio
+- `skills.ts` — skill name + level (0–100), drives the bar chart
+- `projects.ts` — project list. Each entry: `id`, `category` (`WORK` / `PERSONAL`), `title`, `tech[]`, optional `url`, `description`
+- `contact.ts` — email, GitHub, LinkedIn — `label` + `value` + `href`
 
-## Learn More
+Resume PDF → `public/resume.pdf` (replace the file to update).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Favicon → `public/favicon.svg` (amber CRT, edit colors / glyph there).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Controls
 
-### Code Splitting
+Desktop:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+| Key | Action |
+|---|---|
+| ↑ ↓ / W S | Navigate |
+| Enter / Space | Select |
+| Esc / Backspace | Back |
+| V (Resume only) | Toggle text ↔ PDF view |
+| D (Resume only) | Download PDF |
+| ↑↓←→ (Snake only) | Move snake |
 
-### Analyzing the Bundle Size
+Mobile: on-screen D-pad + A (select) and B (back) buttons appear automatically.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Deployment
 
-### Making a Progressive Web App
+The project is linked to the `sieders-projects/sieder-portfolio` Vercel project, which serves the **sieder.dev** apex domain.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Deploy to production
 
-### Advanced Configuration
+```bash
+vercel --prod
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Run from the repo root. This is the canonical command for shipping changes to sieder.dev.
 
-### Deployment
+### Preview deploy
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```bash
+vercel
+```
 
-### `yarn build` fails to minify
+Returns a unique preview URL. Doesn't touch production.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Auto-deploy on push (optional)
+
+Not currently wired up. To enable:
+
+1. Vercel dashboard → `sieder-portfolio` → Settings → Git
+2. Connect to GitHub repo `sieder/my-osx-portfolio`
+3. Set production branch to `master`
+
+After that, every push to `master` auto-deploys to sieder.dev.
+
+### Useful commands
+
+```bash
+vercel ls                              # recent deployments
+vercel inspect <deployment-url>        # deployment details
+vercel logs <deployment-url>           # build / runtime logs
+vercel logs <deployment-url> --follow  # tail logs live
+vercel project ls                      # all projects in scope
+```
+
+### Re-link to a different Vercel project
+
+If `.vercel/` ever points at the wrong project:
+
+```bash
+rm -rf .vercel
+vercel link --project sieder-portfolio --yes
+```
+
+## License
+
+Personal project. Code is reference-only — feel free to take ideas, please don't copy the content (resume / project list / etc.) verbatim.
