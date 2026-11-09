@@ -36,6 +36,14 @@ export const projects: Project[] = [
       "Native mobile commerce app for AirAsia's Travel Mall ecosystem. Multi-vertical shopping, payments, vouchers, and loyalty.",
   },
   {
+    id: "aa-food",
+    category: "WORK",
+    title: "AirAsia Food",
+    tech: ["React", "React Native", "Redux Saga"],
+    description:
+      "Food delivery and dine-in app in the AirAsia super app. Restaurant discovery, menus, cart and checkout, and order tracking across web and mobile.",
+  },
+  {
     id: "aa-play",
     category: "WORK",
     title: "AirAsia Play",
