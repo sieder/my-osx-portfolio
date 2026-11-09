@@ -77,6 +77,6 @@ export const projects: Project[] = [
     title: "First",
     tech: ["SvelteKit", "Tauri", "Supabase"],
     description:
-      "Cross-platform desktop app built with SvelteKit + Tauri, Supabase backend, end-to-end tested with Playwright.",
+      "Cross-platform desktop productivity app built with SvelteKit + Tauri, with a Supabase backend and end-to-end tests in Playwright.",
   },
 ];
