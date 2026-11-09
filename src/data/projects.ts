@@ -57,10 +57,10 @@ export const projects: Project[] = [
     id: "pokko",
     category: "PERSONAL",
     title: "Pokko",
-    tech: ["Swift", "SwiftUI", "Kotlin", "Jetpack Compose", "Supabase"],
+    tech: ["Swift", "SwiftUI", "Kotlin", "Supabase", "Claude"],
     url: "https://pokkopocket.com",
     description:
-      "Private AI memory app. Keep notes, photos and files encrypted on the device, find them again with search, and ask questions about them. iPhone app live on the App Store; Mac and Android versions in progress.",
+      "AI-powered personal drive and assistant: drop in any file, it sorts itself, and you can ask for it back from any device. Native apps for macOS, iOS and Android, a Supabase backend serving a hosted Claude model, and encrypted sync with a user-held key. iPhone app live on the App Store.",
   },
   {
     id: "optcg-web",

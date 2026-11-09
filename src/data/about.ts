@@ -1,7 +1,7 @@
 export const about = {
   name: "Sieder Villareal",
   role: "Full-stack Developer",
-  location: "Philippines",
+  location: "Taguig, Philippines",
   bio:
-    "I build web and mobile experiences with React, React Native, Astro, and SvelteKit. Currently shipping cross-platform commerce and ticketing inside the AirAsia ecosystem.",
+    "Software engineer with 7+ years building web and mobile products with React, React Native and Node.js. Senior Software Engineer at AirAsia, shipping commerce and ticketing apps, and founder of Pokko, an AI-powered personal drive for iPhone, Mac and Android.",
 };
