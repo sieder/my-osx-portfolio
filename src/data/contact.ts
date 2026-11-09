@@ -6,17 +6,17 @@ export interface Contact {
 
 export const contacts: Contact[] = [
   {
-    label: "EMAIL",
+    label: "Email",
     value: "siedervillareal@gmail.com",
     href: "mailto:siedervillareal@gmail.com",
   },
   {
-    label: "GITHUB",
+    label: "GitHub",
     value: "github.com/sieder",
     href: "https://github.com/sieder",
   },
   {
-    label: "LINKEDIN",
+    label: "LinkedIn",
     value: "linkedin.com/in/sieder-villareal",
     href: "https://linkedin.com/in/sieder-villareal",
   },
