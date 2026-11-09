@@ -54,6 +54,15 @@ export const projects: Project[] = [
       "Cross-platform event ticketing inside MoveTix. Shared monorepo serving both web and mobile apps with TanStack Query and i18next.",
   },
   {
+    id: "pokko",
+    category: "PERSONAL",
+    title: "Pokko",
+    tech: ["Swift", "SwiftUI", "Kotlin", "Jetpack Compose", "Supabase"],
+    url: "https://pokkopocket.com",
+    description:
+      "Private AI memory app. Keep notes, photos and files encrypted on the device, find them again with search, and ask questions about them. iPhone app live on the App Store; Mac and Android versions in progress.",
+  },
+  {
     id: "optcg-web",
     category: "PERSONAL",
     title: "OPTCG Web",
@@ -69,13 +78,5 @@ export const projects: Project[] = [
     tech: ["SvelteKit", "Tauri", "Supabase"],
     description:
       "Cross-platform desktop app built with SvelteKit + Tauri, Supabase backend, end-to-end tested with Playwright.",
-  },
-  {
-    id: "osx-portfolio",
-    category: "PERSONAL",
-    title: "OSX Portfolio",
-    tech: ["React", "Tailwind", "framer-motion"],
-    description:
-      "Previous version of this portfolio styled as a macOS desktop. Retired in favor of this site.",
   },
 ];
